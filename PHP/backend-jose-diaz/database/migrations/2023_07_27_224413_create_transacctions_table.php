@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('transacctions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('money_balance');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->integer('amount_of_money');
+            $table->unsignedBigInteger('remitent');
+            $table->unsignedBigInteger('destinatary');
+
+            $table->foreign('remitent')->references('id')->on('users');
+            $table->foreign('destinatary')->references('id')->on('users');
+
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('transacctions');
     }
 };
