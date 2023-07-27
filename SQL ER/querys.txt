@@ -1,0 +1,30 @@
+Saber saldo de usuario
+
+SELECT money_balance
+FROM users
+WHERE name = 'nombre_de_usuario';
+
+
+Iniciar sesion
+
+SELECT COUNT(*) AS cantidad_usuarios
+FROM users
+WHERE (name = 'nombre_de_usuario_ingresado' OR email = 'email_ingresado')
+  AND password = 'contrasena_ingresada';
+
+Query para consultar un usuario:
+
+SELECT *
+FROM users
+WHERE name = 'nombre_de_usuario';
+
+Query para consultar transacciones de un usuario:
+
+SELECT *
+FROM transacctions
+WHERE remitent = usuario_id OR destinatary = usuario_id;
+
+Query de retiros
+SELECT money_balance, date_retired
+FROM withdrawals
+WHERE user_id = usuario_id;
