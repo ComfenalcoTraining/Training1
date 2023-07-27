@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Retired extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'money_balance',
+        'user_id',
+        'date_retired',
+    ];
+
 }
